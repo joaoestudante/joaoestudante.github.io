@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <header>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="#faq">CV</a></li>
+            </ul>
+            <div class="theme-container">
+                <input type="checkbox" id="theme-toggle" >
+                <label for="theme-toggle"></label>
+            </div>
+        </nav>
+        {% set image = resize_image(path='profile-pic.png', width=150, height=150) %}
+        <img src="{{image.url}}" alt="" srcset="">
+        {{section.content | safe}}
+    </header>
+    <main>
+        <section>
+            <header>
+                {% set section = get_section(path=section.subsections[0]) %}
+                <h2>Recent</h2>
+                <ul>
+                    {% for post in section.pages %}
+                    {% if loop.index < 4 %}
+                    <li><a href="{{post.path}}"><h4>{{post.title}}</h4></a>
+                        <br/>
+                        <small>{{post.description}}</small>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <a href="/blog/"><h4>View all posts</h4></a>
+            </header>
+        </section>
+    </main>
+{% endblock content %}
+

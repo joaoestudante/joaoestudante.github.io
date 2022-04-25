@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>Blog</li>
+      <li><a href="#faq">CV</a></li>
+    </ul>
+    <img src="" alt="" style="cursor: pointer;" onclick="toggleDarkMode();" id="colorToggle">
+  </nav>
+  This is where you can find everything I've posted.
+</header>
+<main>
+  <h2>
+    {{ section.title }}
+  </h2>
+  <ul>
+    {% for post in section.pages %}
+    <li><a href="{{post.path}}"><h4>{{post.title}}</h4></a>
+      <br/>
+      <small>{{post.description}}</small>
+    </li>
+    {% endfor %}
+  </ul>
+</main>
+
+{% endblock content %}

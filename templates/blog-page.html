@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li>Blog</li>
+            <li><a href="#faq">CV</a></li>
+        </ul>
+        <img src="" alt="" style="cursor: pointer;" onclick="toggleDarkMode();" id="colorToggle">
+    </nav>
+</header>
+<main>
+    <h2>
+        {{ page.title }}
+    </h2>
+    <small>{{page.description}}</small>
+    <br/>
+    <small><strong>{{ page.date }}</strong></small>
+    <hr/>
+
+    {{ page.content | safe }}
+</main>
+{% endblock content %}
